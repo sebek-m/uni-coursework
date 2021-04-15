@@ -1,0 +1,309 @@
+html {
+  height: 100%;
+}
+
+body {
+  text-align: left;
+  font-size: 24px;
+  font-family: 'Lato', 'Helvetica', sans-serif;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.text-box {
+  white-space: pre-wrap;
+}
+
+h2 {
+  text-align: center;
+}
+
+input {
+  font-size: 20px;
+}
+
+#main-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1024px;
+  min-height: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  border: solid 2px grey;
+  background-color: rgb(243, 243, 243);
+}
+
+#info-input-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+#text-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+#big-text {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#lined-window-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+#top {
+  width: 97%;
+  margin-top: 15px;
+}
+
+#bottom {
+  flex-grow: 1;
+  width: 97%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 15px;
+}
+
+#bottom > * {
+  width: 100%;
+}
+
+#bottom-text {
+  margin-top: 20px;
+}
+
+hr {
+  width: 100%;
+}
+
+.rule {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#rule2 {
+  text-align: center;
+}
+
+#cards-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.card {
+  min-height: 150px;
+  width: 15%;
+  border: solid 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6px;
+  flex-grow: 1;
+}
+
+.card:not(:last-child) {
+  margin-right: 15px;
+}
+
+.card[data-selected="true"] {
+  background-color: gold;
+}
+
+.card[data-selected="false"] {
+  background-color: whitesmoke;
+}
+
+button,
+input[type='submit'] {
+  font-size: 25px;
+  padding: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  align-self: flex-end;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+#accept-settings {
+  margin-right: 0px;
+}
+
+#download-button {
+  align-self: center;
+  margin-top: 60px;
+}
+
+form {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#info-form {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.input-label {
+  font-weight: bold;
+}
+
+.input-object {
+  margin-bottom: 17px;
+  width: max-content;
+}
+
+#bottom-text {
+  font-style: italic;
+}
+
+/* Hides number input arrows, from: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp"
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#info-input-view {
+  display: none;
+}
+
+#lined-window-view {
+  display: none;
+}
+
+#download-button {
+  display: none;
+}
+
+/* SETTINGS */
+
+#settings-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+.settings-anchor {
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-top: 13px;
+  background-color: rgb(131, 236, 131);
+  color: black;
+  border: solid rgb(87, 155, 87);
+  border-radius: 10px;
+}
+
+.settings-anchor:hover {
+  background-color: rgb(145, 255, 145);
+}
+
+fieldset {
+  margin-bottom: 20px;
+}
+
+#k-time {
+  margin-bottom: 20px;
+}
+
+select {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 20px;
+  font-size: 16px;
+  max-height: 30%;
+}
+
+#setting-inputs > * {
+  width: 100%;
+}
+
+#task-number {
+  width: 30px;
+}
+
+#task-name {
+  width: 500px;
+}
+
+#task-story,
+#task-extra-description {
+  height: 200px;
+}
+
+#settings-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+}
+
+#stage-duration {
+  margin-bottom: 20px;
+}
+
+#small-text {
+  text-align: justify;
+  padding-left: 30px;
+  padding-right: 30px;
+}

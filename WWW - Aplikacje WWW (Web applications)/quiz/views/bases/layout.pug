@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    div(id="loadOverlay" style="background-color:#eeddee; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;")
+    title Quiz Algebraiczny
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/images/favicon-small.png")
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    block unveiler
+  body
+    div(class="container")
+      header
+        a(class="logo-link" href="/")
+          img(class="logo" src="/images/logo.gif" alt="Quiz Algebraiczny")
+      div(class="mid-container")
+        block mid
+      div(class="empty-color")
+      footer
+        p(class="autor") Autor: Sebastian Miller
+    block scripts

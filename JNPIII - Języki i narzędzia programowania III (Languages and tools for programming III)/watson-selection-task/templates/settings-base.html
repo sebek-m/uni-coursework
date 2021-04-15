@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} - Panel eksperymentatora{% endblock %}
+{% block content %}
+  <div id='settings-view'>
+    <h2 id='settings-header'>{% block settings_header %}{% endblock %}</h2>
+    <div id='settings-list'>
+      {% block settings_list %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

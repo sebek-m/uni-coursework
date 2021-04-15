@@ -1,0 +1,1 @@
+# File search engine based on Apache Tika and Apache Lucene

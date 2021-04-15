@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} - Panel eksperymentatora{% endblock %}
+{% block content %}
+  <div id='settings-view'>
+    <h2 id='settings-header'>Wybór trybu badawczego</h2>
+    <h3>Aktualny tryb:{% if mode==1 %} I{% elif mode==2 %} II{% else %} III{% endif %}</h3>
+    <div id='settings-list'>
+      <a class='settings-anchor' href='/set-mode/1'>Ustaw I tryb badawczy</a>
+      <a class='settings-anchor' href='/set-mode/2'>Ustaw II tryb badawczy</a>
+      <a class='settings-anchor' href='/set-mode/3'>Ustaw III tryb badawczy</a>
+    </div>
+  </div>
+{% endblock %}

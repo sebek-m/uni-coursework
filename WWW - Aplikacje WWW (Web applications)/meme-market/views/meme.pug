@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Meme - #{meme.name}
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel="icon" href="/favicon.ico")
+  style
+    include /stylesheets/style.css
+  body
+    header
+      div(class="header-main-section")
+        h1 Meme
+        div(class="counter")
+          | During this session you have viewed
+          | #[span #{view_count}]
+          | #{page_s}!
+      div(class="header-login-section")
+        if !username
+          form(method="post" action="/login" class="login-form")
+            if login_failed
+              div(class="login-failed-msg") Incorrect password!
+            
+            label(for="username") Username:
+            input(name="username" type="text" required="required")
+            label(for="password") Password:
+            input(name="password" type="password" required="required")
+            input(type="submit" value="Log in")
+        else
+          div Logged in as:
+          div(class="username")= username
+          form(action="/logout")
+            input(type="submit" value="Log out")
+    h2 #{meme.name}
+    div(class="price") Current price: #{meme.price}
+    if username
+      form(id="change-price" method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+
+        div(id="input-msg" data-valid=valid)= message
+        label(for="price") Set new price:
+        input(name="price" type="number" min="0" required="required")
+        input(type="submit" value="Set")
+    img(class="meme-img-big" src=meme.url)
+    h2 Price history
+    table(id="price-history-table")
+      tr
+        th DATE
+        th PRICE
+      each price, index in meme.prices
+        tr
+          if index == 0
+            td current
+          else
+            td #{price.date}
+          td(class="price-cell") #{price.price}
+    footer
+      a(href="/") &lt; BACK

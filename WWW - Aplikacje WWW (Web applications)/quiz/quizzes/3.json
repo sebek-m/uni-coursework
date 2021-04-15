@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "id": "trudny",
+    "title": "Trudny Quiz",
+    "description": "Zapraszam na wyjątkowo trudny quiz"
+  },
+  "questions" : [
+    {
+      "content": "1 + 1 = ?",
+      "correct_answer": "2",
+      "wrong_ans_penalty": 10000
+    },
+    {
+      "content": "2 = ?",
+      "correct_answer": "2",
+      "wrong_ans_penalty": 30000
+    },
+    {
+      "content": "2 * 2 = ?",
+      "correct_answer": "4",
+      "wrong_ans_penalty": 20000
+    },
+    {
+      "content": "10 / 10 = ?",
+      "correct_answer": "1",
+      "wrong_ans_penalty": 15000
+    },
+    {
+      "content": "100 * 10 = ?",
+      "correct_answer": "1000",
+      "wrong_ans_penalty": 15555
+    },
+    {
+      "content": "5 - 5 = ?",
+      "correct_answer": "0",
+      "wrong_ans_penalty": 12000
+    },
+    {
+      "content": "(-1) * 50 = ?",
+      "correct_answer": "-50",
+      "wrong_ans_penalty": 15200
+    }
+  ]
+}

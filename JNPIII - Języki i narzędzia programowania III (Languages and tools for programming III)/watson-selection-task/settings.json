@@ -1,0 +1,95 @@
+{
+  "mode": 1,
+  "general": {
+    "k_time": 3,
+    "welcome_text": "Witamy w eksperymencie dotyczącym Problemu 4 Kart.",
+    "thanks_text": "Dziękujemy za udział w eksperymencie."
+  },
+  "stage_one": {
+    "instructions": "Po kliknięciu \"Dalej\", rozpocznij klikanie prawym przyciskiem myszy. Jeśli nie będziesz klikał(-a) przez 3 sekundy, to tło ekranu zmieni kolor na czerwony, a jeśli zaczniesz klikać rytmicznie, to tło zmieni kolor na zielony.",
+    "duration": 2
+  },
+  "stage_two": {
+    "instructions": "Po kliknięciu \"Dalej\", rozpocznie się sesja pomiarowa zadania GIL. Tak jak poprzednio, klikaj prawym przyciskiem myszy. Jeśli nie będziesz klikał(-a) przez 3 sekundy, to tło ekranu zmieni kolor na czerwony, a jeśli zaczniesz klikać rytmicznie, to tło zmieni kolor na zielony.",
+    "duration": 2
+  },
+  "stage_three": {
+    "instructions": "Za moment rozpocznie się sesja treningowa, w której będziesz równocześnie wykonywać zadanie GIL oraz klikać lewym przyciskiem myszy na karty. Jeśli nie będziesz klikał(-a) przez 3 sekundy, to tło ekranu zmieni kolor na czerwony, a jeśli zaczniesz klikać rytmicznie, to tło zmieni kolor na zielony.\n\nKliknięcie na kartę powoduje, że staje się ona zaznaczona, a ponowne kliknięcie odznacza ją.\n\nJeśli kursor myszy znajduje się nad którąś z kart, to kliknięcia prawym przyciskiem myszy nie są rejestrowane do zadania GIL, więc pomimo tych kliknięć, ekran zmieni się po kilku sekundach na czerwony.",
+    "duration": 2
+  },
+  "stage_four": {
+    "instructions": "Za chwilę rozpocznie się sesja zadaniowa. Wyświetlane będą kolejne zadania selekcyjne, na które musisz udzielać odpowiedzi poprzez zaznaczenie odpowiednich kart i kliknięcie \"Dalej\"\n\nPrzed rozpoczęciem każdego z zadań, wyświetlony zostanie jego numer. Po kliknięciu \"Dalej\", na ekranie ukaże się część opisowa zadania, a po ponownym kliknięciu \"Dalej\" - część zadaniowa, wraz z kartami. Dokładne polecenie jest powtórzone przy każdym zadaniu.\n\nABCD",
+    "instructions_two": "Za chwilę rozpocznie się sesja zadaniowa. Wyświetlane będą kolejne zadania selekcyjne, na które musisz udzielać odpowiedzi poprzez zaznaczenie odpowiednich kart i kliknięcie \"Dalej\"\n\nPrzed rozpoczęciem każdego z zadań, wyświetlony zostanie jego numer. Po kliknięciu \"Dalej\", na ekranie ukaże się część opisowa zadania, a po ponownym kliknięciu \"Dalej\" - część zadaniowa, wraz z kartami. Dokładne polecenie jest powtórzone przy każdym zadaniu.\n\nTak jak poprzednio, powinieneś/powinnaś też wykonywać zadanie GIL z klikaniem prawym przyciskiem myszy, jednak tło nie zmieni koloru na zielony, gdy zaczniesz klikać rytmicznie - jedynie zmieni kolor na czerwony w przypadku nieklikania przez kilka sekund.",
+    "instructions_three": "Za chwilę rozpocznie się sesja zadaniowa. Wyświetlane będą kolejne zadania selekcyjne, na które musisz udzielać odpowiedzi poprzez zaznaczenie odpowiednich kart i kliknięcie \"Dalej\"\n\nPrzed rozpoczęciem każdego z zadań, wyświetlony zostanie jego numer. Po kliknięciu \"Dalej\", na ekranie ukaże się część opisowa zadania, a po ponownym kliknięciu \"Dalej\" - część zadaniowa, wraz z kartami. Dokładne polecenie jest powtórzone przy każdym zadaniu.\n\nTak jak poprzednio, powinieneś/powinnaś też wykonywać zadanie GIL z klikaniem prawym przyciskiem myszy - tło zmieni kolor na zielony, gdy zaczniesz klikać rytmicznie, a na czerwony w przypadku nieklikania przez kilka sekund.",
+    "first_task": 4,
+    "second_task": 2,
+    "tasks": [
+      {
+        "number": 0,
+        "name": "reguła gór",
+        "selected": false
+      },
+      {
+        "number": 1,
+        "name": "reguła abstrakcyjna",
+        "selected": false
+      },
+      {
+        "number": 2,
+        "name": "reguła tematyczna",
+        "selected": false
+      },
+      {
+        "number": 3,
+        "name": "reguła pragmatyczna",
+        "selected": true
+      },
+      {
+        "number": 4,
+        "name": "reguła ostrożności",
+        "selected": false
+      },
+      {
+        "number": 5,
+        "name": "reguła społeczna z wykrywaniem oszustów",
+        "selected": false
+      }
+    ]
+  },
+  "pilot_mode": {
+    "instructions": "Za chwilę rozpocznie się sesja zadaniowa. Wyświetlane będą kolejne zadania selekcyjne, na które musisz udzielać odpowiedzi poprzez zaznaczenie odpowiednich kart i kliknięcie \"Dalej\"\n\nPrzed rozpoczęciem każdego z zadań, wyświetlony zostanie jego numer. Po kliknięciu \"Dalej\", na ekranie ukaże się część opisowa zadania, a po ponownym kliknięciu \"Dalej\" - część zadaniowa, wraz z kartami. Dokładne polecenie jest powtórzone przy każdym zadaniu.",
+    "first_task": 3,
+    "tasks": [
+      {
+        "number": 0,
+        "name": "reguła gór",
+        "selected": true
+      },
+      {
+        "number": 1,
+        "name": "reguła abstrakcyjna",
+        "selected": true
+      },
+      {
+        "number": 2,
+        "name": "reguła tematyczna",
+        "selected": true
+      },
+      {
+        "number": 3,
+        "name": "reguła pragmatyczna",
+        "selected": false
+      },
+      {
+        "number": 4,
+        "name": "reguła ostrożności",
+        "selected": true
+      },
+      {
+        "number": 5,
+        "name": "reguła społeczna z wykrywaniem oszustów",
+        "selected": true
+      }
+    ]
+  }
+}

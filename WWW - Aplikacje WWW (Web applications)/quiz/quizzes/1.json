@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "Quiz 1",
+    "description": "Zapraszam na świetny pierwszy quiz"
+  },
+  "questions" : [
+    {
+      "content": "15 + 6 = ?",
+      "correct_answer": "21",
+      "wrong_ans_penalty": 3000
+    },
+    {
+      "content": "20 * (9 - 2) = ?",
+      "correct_answer": "140",
+      "wrong_ans_penalty": 5500
+    },
+    {
+      "content": "(925 + 20) : 5 = ?",
+      "correct_answer": "189",
+      "wrong_ans_penalty": 2500
+    },
+    {
+      "content": "-300 - (-27) + 6 = ?",
+      "correct_answer": "-267",
+      "wrong_ans_penalty": 3770
+    },
+    {
+      "content": "20 : 4 + 7 * 9 - 3 = ?",
+      "correct_answer": "65",
+      "wrong_ans_penalty": 4000
+    }
+  ]
+}

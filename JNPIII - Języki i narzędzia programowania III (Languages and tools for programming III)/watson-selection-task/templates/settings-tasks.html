@@ -1,0 +1,8 @@
+{% extends "settings-base.html" %}
+{% block settings_header %}Edycja zadań selekcyjnych{% endblock %}
+{% block settings_list %}
+  {% for task_info in tasks %}
+    <a class="settings-anchor" href="/settings/tasks/{{ task_info.number }}">Zadanie {{ task_info.number }}, {{ task_info.name }}</a>
+  {% endfor %}
+  <a class="settings-anchor" id="new-task-anchor" href="/settings/tasks/new-task">Utwórz nowe zadanie</a>
+{% endblock %}

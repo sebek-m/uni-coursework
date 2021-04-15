@@ -1,0 +1,12 @@
+{
+  "task_number": 2,
+  "task_name": "reguła tematyczna",
+  "intro_story": "Pan Jan Kowalski często podróżuje w delegacjach. Czasem jeździ samochodem a czasem pociągiem. Przypuszczasz, że:",
+  "rule": "jeśli jedzie do Poznania, to podróżuje pociągiem",
+  "p": "jedzie do Poznania",
+  "non_p": "jedzie do Krakowa",
+  "q": "podróżuje pociągiem",
+  "non_q": "podróżuje samochodem",
+  "extra_description": "Karty, które zobaczysz poniżej przedstawiają formularze delegacji pana Kowalskiego na których, z jednej strony jest cel podróży, a z drugiej środek lokomocji.",
+  "card_selection_task": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, że powyższa reguła jest złamana."
+}

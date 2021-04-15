@@ -1,0 +1,12 @@
+{
+  "task_number": 1,
+  "task_name": "reguła abstrakcyjna",
+  "intro_story": "Wyobraź sobie, że masz talię kart na których z jednej strony są litery alfabetu łacińskiego, a z drugiej strony liczby naturalne. Przypuszczasz, że litery i liczby na kartach są rozmieszczone zgodnie z następującą regułą:",
+  "rule": "jeśli z jednej strony jest samogłoska, to z drugiej strony jest liczba parzysta",
+  "p": "A",
+  "non_p": "G",
+  "q": "4",
+  "non_q": "7",
+  "extra_description": "ale nie jesteś tego pewien (-na). Karty, które zobaczysz poniżej zostały wyciągnięte z tej talii.\n\n",
+  "card_selection_task": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, że w Twojej talii powyższa reguła jest złamana."
+}

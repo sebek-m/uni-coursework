@@ -1,0 +1,14 @@
+extends layout
+
+block mid
+  div(class="split-mid-container")
+    div(class="main-section")
+      block main-section
+    div(class="info-section")
+      block info-section
+        div(class="logged-in-as")
+          div Zalogowano jako:
+          div= username
+          a(href="/change-password") Zmień hasło
+          a(href="/logout") Wyloguj
+        a(href="/stats") Zobacz swoje statystyki

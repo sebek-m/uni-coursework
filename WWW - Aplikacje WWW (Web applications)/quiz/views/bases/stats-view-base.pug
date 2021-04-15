@@ -1,0 +1,49 @@
+extends split-mid-base
+
+block main-section
+  div(class="quiz-stats-details")
+    div(class="quiz-info-stats")
+      h3= meta.title
+      p= meta.description
+    h2 TWOJE STATYSTYKI
+    div(class="responses")
+      each response, index in stats.responses
+        div(class="response-stats" data-correct=response.correct)
+          div(class="response-header")
+            span Pytanie #{index + 1}
+            - var correct_symbol = response.correct ? '&#9989;' : '&#10060;'
+            span !{correct_symbol}
+          div #[span(class="stat-name")= stats.questions[index].question]
+          div #[span(class="stat-name") Twoja odpowiedź:] #{response.answer}
+          div #[span(class="stat-name") Poprawna odpowiedź:] #{stats.questions[index].correct_answer}
+          div #[span(class="stat-name") Czas:] #{msToSec(response.answer_time)}
+          div #[span(class="stat-name") Kara:] #{response.correct ? "BRAK" : msToSec(stats.questions[index].wrong_ans_penalty)}
+          div #[span(class="stat-name") Średni czas poprawnej odpowiedzi:] #{msToSec(stats.mean_times[index])}
+
+    div(class="total-score")
+      div #[span(class="stat-name") Czas całkowity:] #{msToSec(stats.time_sum)}
+      div #[span(class="stat-name") Suma kar:] #{msToSec(stats.penalty_sum)}
+      - var score_sum = stats.time_sum + stats.penalty_sum
+      div #[span(class="stat-name") Wynik:] #{msToSec(score_sum)}
+  
+    block back-button
+
+prepend info-section
+  div(class="high-scores-section")
+    h3 TOP 5 WYNIKÓW
+    if stats.top_five.length == 0
+      div BRAK WYNIKÓW
+    else
+      table(class="top-five")
+        tr
+          th Miejsce
+          th Nazwa
+          th Wynik
+        each score, place in stats.top_five
+          tr
+            td= place + 1
+            td= score.username
+            td= msToSec(score.score)
+
+block unveiler
+  link(rel='stylesheet', href='/stylesheets/unveiler.css')

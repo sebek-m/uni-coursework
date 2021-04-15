@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import shutil
+import subprocess
+import signal
+import atexit
+import time
+
+http_proc = None
+stunnel_pid = -1
+folder = "stunnel_garbage"
+
+# Sprawdza, czy podany adres http ma port
+def check_port(split_host):
+  if len(split_host) == 2:
+    if split_host[1].isnumeric:
+      return True
+    else:
+      sys.stderr.write("ERROR: invalid port\n")
+      sys.exit(1)
+  else:
+    return False
+
+# Usuwa pliki pomocnicze programu stunnel
+def remove_stunnel_files():
+  global folder
+
+  # Ewentualne powtórzenie wywołania rmtree, gdy
+  # SIGINT dojdzie np. w trakcie wywołania tej funkcji
+  # przy normalnym wyjściu z programu, kiedy mogła zdążyć
+  # usunąć już któryś plik.
+  for i in range(10):
+    try:
+      shutil.rmtree(folder)
+    except OSError as e:
+      if type(e) != FileNotFoundError:
+        raise
+    else:
+      break
+
+# Zamyka uruchomione przez skrypt procesy i usuwa stworzone pliki
+def cleanup(on_sigint):
+  global stunnel_pid, http_proc
+
+  if http_proc is not None:
+    if http_proc.poll() is None:
+      if on_sigint:
+        http_proc.send_signal(signal.SIGINT)
+      else:
+        http_proc.wait()
+
+    http_proc = None
+  if stunnel_pid != -1:
+    if on_sigint:
+      os.kill(stunnel_pid, signal.SIGINT)
+    else:
+      os.kill(stunnel_pid, signal.SIGTERM)
+    stunnel_pid = -1
+
+  remove_stunnel_files()
+
+# Handler sygnału SIGINT
+def cleanup_on_int(signum, frame):
+  global stunnel_pid, http_proc
+
+  atexit.unregister(cleanup)
+  cleanup(True)
+
+  sys.exit()
+
+# Uruchamia testhttp_raw w przypadku podania adresu z czystym http
+def raw_http(port, only_host):
+  global http_proc
+
+  # Jeśli nie podano portu, to ustawiamy domyślny
+  if port == False:
+    only_host = only_host + ":80"
+    
+  try:
+    http_proc = subprocess.Popen(["./testhttp_raw", only_host, sys.argv[1], sys.argv[2]])
+  except OSError:
+    sys.stderr.write("ERROR: Failed to run 'testhttp_raw', maybe run 'make' first.\n")
+    sys.exit(1)
+  
+# Przygotowuje konfigurację, uruchamia stunnel,
+# a następnie testhttp_raw w przypadku podania adresu z https
+def https(port, only_host):
+  global stunnel_pid, http_proc, folder
+
+  localhost = "127.0.0.1:46290"
+
+  if port == False:
+    only_host = only_host + ":443"
+
+  try:
+    os.mkdir(folder)
+  except OSError as e:
+    if type(e) != FileExistsError:
+      raise
+    pass
+
+  # Pole pid w konfiguracji musi mieć ścieżkę bezwzględną
+  pid_file = os.path.abspath(folder + "/stunnel.pid")
+
+  stunnel_config = ("pid = " + pid_file + "\n"
+                    "[service]\n" +
+                    "client = yes\n" +
+                    "accept = " + localhost + "\n"
+                    "connect = " + only_host + "\n")
+
+  with open(folder + "/stunnel.conf", "w") as config_file:
+    config_file.write(stunnel_config)
+
+  try:
+    with open(os.devnull, 'wb') as devnull:
+      stunnel = subprocess.run(["stunnel", folder + "/stunnel.conf"], stdout=devnull)
+    stunnel.check_returncode()
+  except subprocess.CalledProcessError:
+    sys.stderr.write("ERROR: Failed to run stunnel.\n")
+    sys.exit(1)
+
+  counter = 0
+  while not os.path.exists(folder + "/stunnel.pid") and counter < 10:
+    time.sleep(1)
+    counter += 1
+
+  with open(folder + "/stunnel.pid") as pid_file:
+    stunnel_pid = int(pid_file.read())
+
+  try:
+    http_proc = subprocess.Popen(["./testhttp_raw", localhost, sys.argv[1], sys.argv[2]])
+  except OSError as e:
+    sys.stderr.write("ERROR: Failed to run 'testhttp_raw', maybe run 'make' first.\n")
+    sys.exit(1)
+
+
+atexit.register(cleanup, False)
+signal.signal(signal.SIGINT, cleanup_on_int)
+
+if len(sys.argv) != 3:
+  sys.stderr.write("ERROR: usage: " + sys.argv[0] + " cookies-file http-address\n")
+  sys.exit(1)
+
+split_address = sys.argv[2].split("://")
+prefix = split_address[0]
+only_host = split_address[1].split("/")[0]
+split_host = only_host.split(":")
+
+port = check_port(split_host)
+
+if prefix == "http":
+  raw_http(port, only_host)
+elif prefix == "https":
+  https(port, only_host)
+else:
+  sys.stderr.write("ERROR: invalid http address\n")
+  sys.exit(1)

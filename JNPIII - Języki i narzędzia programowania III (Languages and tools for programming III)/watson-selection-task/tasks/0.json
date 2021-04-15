@@ -1,0 +1,12 @@
+{
+  "task_number": 0,
+  "task_name": "reguła gór",
+  "intro_story": "Wyobraź sobie, że jesteś turystą i wybrałeś(-aś) się po raz kolejny w Tatry. Utrzymuje się dość niska temperatura i na szczytach zalega jeszcze twardy zimowy śnieg. Aby chodzić po takim śniegu potrzebne są raki i czekan, wchodzenie bez nich na ośnieżone szczyty jest bardzo niebezpieczne! Wchodząc na szczyt bez raków i czekana, można się pośliznąć, osunąć, ciężko poturbować a nawet zginąć, zatem należy postępować zgodnie z następującą regułą:",
+  "rule": "jeśli chodzisz po ośnieżonych górach, to musisz mieć czekan i raki",
+  "p": "Był śnieg",
+  "non_p": "Nie było śniegu",
+  "q": "Miałeś(-aś) czekan i raki",
+  "non_q": "Nie miałeś(-aś) czekanu i raków",
+  "extra_description": "Teraz wiesz o tym znakomicie, ale chyba kiedyś zdarzało Ci się chodzić po ośnieżonych Tatrach bez raków i czekana. Karty, które zobaczysz poniżej reprezentują cztery Twoje wycieczki we wcześniejszych latach. Jedna strona karty zawiera informację czy góry były wtedy ośnieżone a druga wskazuje na to czy miałeś(-aś) wtedy raki i czekan.",
+  "card_selection_task": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, czy złamałeś(-aś) powyższą regułę i wystawiłeś(-aś) siebie na niebezpieczeństwo."
+}

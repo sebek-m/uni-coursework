@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %} - Panel eksperymentatora{% endblock %}
+{% block content %}
+  <script>
+    var settings = fetch('/api/experimental-settings');
+  </script>
+  <div id='settings-view'>
+    <h2 id='settings-header'>Etap czwarty</h2>
+    <form id='setting-inputs' onsubmit='return acceptSettings(event)'>
+      <div class='input-label'>Instrukcja dla trybu pierwszego:</div>
+      <textarea id='stage-instructions'>{{ stage.instructions }}</textarea>
+
+      <div class='input-label'>Instrukcja dla trybu drugiego:</div>
+      <textarea id='stage-instructions-two'>{{ stage.instructions_two }}</textarea>
+
+      <div class='input-label'>Instrukcja dla trybu trzeciego:</div>
+      <textarea id='stage-instructions-three'>{{ stage.instructions_three }}</textarea>
+
+      <fieldset id='training-task-selection-box'>
+        <legend>Zadania treningowe:</legend>
+
+        <div class='input-label'>Pierwsze:</div>
+        <select name='first-training-task' id='first-training-task' onchange='selectTrainingTask(0)' required>
+          {% for task in stage.tasks %}
+            <option value="{{ task.number }}" {{ 'selected' if task.number==stage.first_task else '' }} {{ 'disabled' if task.number==stage.second_task else '' }}>
+              Zadanie {{ task.number }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <div class='input-label'>Drugie:</div>
+        <select name='second-training-task' id='second-training-task' onchange='selectTrainingTask(1)' required>
+          {% for task in stage.tasks %}
+            <option value="{{ task.number }}" {{ 'selected' if task.number==stage.second_task else '' }} {{ 'disabled' if task.number==stage.first_task else '' }}>
+              Zadanie {{ task.number }}
+            </option>
+          {% endfor %}
+        </select>
+      </fieldset>
+      <fieldset id='task-selection-box'>
+        <legend>Wybierz pozostałe zadania (co najmniej jedno):</legend>
+        {% for task in stage.tasks %}
+          <div class='task-option'>
+            <input name="task-box" type="checkbox" onchange="checkTask('{{ task.number }}')" id='{{ task.number }}' {{ 'checked' if task.selected else '' }} {{ 'disabled' if (task.number==stage.first_task or task.number==stage.second_task) else '' }}>
+            <label for="{{ task.number }}">Zadanie {{ task.number }}, {{ task.name }}</label>
+          </div>
+        {% endfor %}
+      </fieldset>
+
+      <input type='submit' id='accept-settings' value='Zatwierdź'>
+    </form>
+  </div>
+
+  <script>
+    let settingsObject = {};
+
+    let firstTrainingTask = document.getElementById('first-training-task');
+    firstTrainingTask.dataset.prev = firstTrainingTask.selectedIndex;
+    let secondTrainingTask = document.getElementById('second-training-task');
+    secondTrainingTask.dataset.prev = secondTrainingTask.selectedIndex;
+
+    let selectedTasks = Array.from(document.getElementsByName('task-box'));
+    let selectedCount = selectedTasks.map((el) => { return el.checked; }).filter((el) => { return el == true; }).length;
+
+    function uncheck() {
+      selectedCount--;
+
+      if (selectedCount == 0) {
+        document.getElementById('accept-settings').disabled = true;
+      }
+    }
+
+    function checkTask(taskNumber) {
+      var checkBox = document.getElementById(taskNumber);
+      
+      if (checkBox.checked) {
+        selectedCount++;
+
+        if (selectedCount == 1) {
+          document.getElementById('accept-settings').disabled = false;
+        }
+      }
+      else {
+        uncheck();
+      }
+    }
+
+    function selectTrainingTask(which) {
+      let mySelect, otherSelect;
+
+      if (which == 0) {
+        mySelect = firstTrainingTask;
+        otherSelect = secondTrainingTask;
+      }
+      else {
+        mySelect = secondTrainingTask;
+        otherSelect = firstTrainingTask;
+      }
+
+      otherSelect.options.item(mySelect.selectedIndex).disabled = true;
+      otherSelect.options.item(mySelect.dataset.prev).disabled = false;
+
+      selectedTasks[mySelect.dataset.prev].disabled = false;
+      selectedTasks[mySelect.selectedIndex].disabled = true;
+      if (selectedTasks[mySelect.selectedIndex].checked) {
+        selectedTasks[mySelect.selectedIndex].checked = false;
+        uncheck();
+      }
+
+      mySelect.dataset.prev = mySelect.selectedIndex;
+    }
+
+    async function acceptSettings(e) {
+      e.preventDefault();
+
+      settingsObject = await (await settings).json();
+
+      if (!document.getElementById('setting-inputs').checkValidity()) {
+        return;
+      }
+
+      for (let [i, task] of selectedTasks.entries()) {
+        settingsObject.tasks[i].selected = task.checked;
+      }
+
+      await fetch(`/submit-experimental-settings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          instructions: document.getElementById('stage-instructions').value,
+          instructions_two: document.getElementById('stage-instructions-two').value,
+          instructions_three: document.getElementById('stage-instructions-three').value,
+          first_task: parseInt(document.getElementById('first-training-task').value),
+          second_task: parseInt(document.getElementById('second-training-task').value),
+          tasks: settingsObject.tasks
+        })
+      })
+
+      window.location.href = '/settings';
+    }
+  </script>
+{% endblock %}

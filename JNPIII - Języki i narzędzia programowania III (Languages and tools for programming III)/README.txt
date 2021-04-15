@@ -1,0 +1,1 @@
+Programs written for the 'Languages and tools for programming III' class, whose sub-topic was "Human information processing". Both of the programs serve as a tool for replicating a particular cognitive science experiment.

@@ -1,0 +1,10 @@
+extends layout
+
+block mid
+  block title-block
+  div(class="single-mid-background")
+    div(class="single-mid-title")= single_mid_title
+    block single-mid-content
+
+block unveiler
+  link(rel='stylesheet', href='/stylesheets/unveiler.css')

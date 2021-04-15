@@ -1,0 +1,62 @@
+extends bases/split-mid-base
+
+prepend info-section
+  if quiz_count > 0
+    div(class="high-scores-section")
+      h3(class="high-scores-header") TOP 5 WYNIKÓW
+      p(class="scores-quiz-name")
+      div(class="score-lists-section")
+
+    div(class="quiz-progress-section")
+      h3(class="time-header") CZAS:
+      div(class="stopwatch")
+
+      div(class="quiz-info-in-game")
+        h3(class="quiz-title-in-game")
+        p(class="quiz-intro-in-game")
+
+block main-section
+  if quiz_count === 0
+    div(id="no-more") Nie masz już żadnych quizów do rozwiązania
+  else 
+    div(class="main-pre-quiz-screen")
+      h2(class="quiz-select-header") Wybierz quiz:
+      select(class="quiz-select")
+
+      p(class="quiz-intro")
+
+      button(class="start-button") ROZPOCZNIJ NOWY QUIZ
+    div(class="main-quiz-screen")
+      div(class="question-number")
+
+      button(class="left-arrow" disabled) &lt;
+      button(class="right-arrow") &gt;
+
+      div(class="mid")
+        div(class="question-and-input-section")
+        
+        div(class="buttons-section")
+          button(class="stop-button" disabled) STOP
+          button(class="cancel-button") Anuluj
+
+block scripts
+  script.
+    /*
+      Zaczerpnięte z https://stackoverflow.com/a/55230179. Dzięki temu
+      ustawienie "module": "amd" w tsconfig pozwala na kompilację do
+      pojedynczego pliku main.js i unika się problemów związanych
+      z CORS, o których wspomina p. Ciebiera na RocketChacie.
+    */
+    window.define = function(name, required, moduleFn) {
+      var require = function() { throw new Error("AMD require not supported!")}
+      var exports = window.define.modules[name] = {}
+      var resolved = [require, exports]
+      for (var i = 2; i < required.length; i++) {
+        var m = window.define.modules[required[i]]
+        if (!m) throw new Error("AMD module `" + required[i] + "` not found!")
+        resolved.push(m)
+      }
+      moduleFn.apply(null, resolved)
+    }
+    window.define.modules = {}
+  script(src='/javascripts/main.js')

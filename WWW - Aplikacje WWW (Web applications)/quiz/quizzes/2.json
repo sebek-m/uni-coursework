@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "id": "2",
+    "title": "Quiz 2",
+    "description": "Zapraszam na fajny drugi quiz"
+  },
+  "questions" : [
+    {
+      "content": "28 + 100 - 14 = ?",
+      "correct_answer": "114",
+      "wrong_ans_penalty": 7000
+    },
+    {
+      "content": "321 * (20 - 15) = ?",
+      "correct_answer": "1605",
+      "wrong_ans_penalty": 20500
+    },
+    {
+      "content": "5 * ((18 : 2) : 3) = ?",
+      "correct_answer": "15",
+      "wrong_ans_penalty": 15000
+    },
+    {
+      "content": "-115 * 2 + 1 - 91 = ?",
+      "correct_answer": "-420",
+      "wrong_ans_penalty": 11200
+    },
+    {
+      "content": "10 + 60 + 91 - 2 * 4 = ?",
+      "correct_answer": "153",
+      "wrong_ans_penalty": 20000
+    },
+    {
+      "content": "2 * (3 * 23) - (6 + 7 * 9) = ?",
+      "correct_answer": "69",
+      "wrong_ans_penalty": 25000
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "nickname": "sebastian",
+  "gender": "m",
+  "age": "25",
+  "mode": 1,
+  "stageTwoGILClicks": "502;699;880;1081;1264",
+  "taskData": [
+    {
+      "externalTaskNum": 1,
+      "internalTaskNum": 4,
+      "taskName": "reguła ostrożności",
+      "executionDuration": 4534,
+      "solutionDuration": 3600,
+      "GILClicks": "n/a",
+      "cardOrder": "P;nP;nQ;Q",
+      "correct": true,
+      "selectionTimes": [
+        "1240",
+        "1664;2231",
+        "",
+        "2895"
+      ],
+      "deselectionTimes": [
+        "",
+        "1984;2512",
+        "",
+        ""
+      ],
+      "finalSelectionOrder": "P;nQ",
+      "finalSelectionOrderedTimes": "1240;2895"
+    },
+    {
+      "externalTaskNum": 2,
+      "internalTaskNum": 2,
+      "taskName": "reguła tematyczna",
+      "executionDuration": 4751,
+      "solutionDuration": 3992,
+      "GILClicks": "n/a",
+      "cardOrder": "Q;P;nP;nQ",
+      "correct": true,
+      "selectionTimes": [
+        "1753;2752",
+        "",
+        "1463",
+        "3424"
+      ],
+      "deselectionTimes": [
+        "2344",
+        "",
+        "2056",
+        ""
+      ],
+      "finalSelectionOrder": "P;nQ",
+      "finalSelectionOrderedTimes": "2752;3424"
+    },
+    {
+      "externalTaskNum": 3,
+      "internalTaskNum": 3,
+      "taskName": "reguła pragmatyczna",
+      "executionDuration": 6297,
+      "solutionDuration": 5448,
+      "GILClicks": "n/a",
+      "cardOrder": "P;nQ;nP;Q",
+      "correct": false,
+      "selectionTimes": [
+        "4575",
+        "2391",
+        "848;1440",
+        "3000;4992"
+      ],
+      "deselectionTimes": [
+        "",
+        "",
+        "1152;1744",
+        "4192"
+      ],
+      "finalSelectionOrder": "nP;P;nQ",
+      "finalSelectionOrderedTimes": "2391;4575;4992"
+    }
+  ]
+}

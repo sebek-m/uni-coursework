@@ -1,0 +1,13 @@
+extends bases/single-mid-base
+
+block title-block
+  - var single_mid_title = "Zaloguj się:"
+
+block single-mid-content
+  div(id="login-failed" data-failed=login_failed) Nieprawidłowa nazwa użytkownika lub hasło!
+  form(method="post" action="/login")
+    label(for="username") Nazwa użytkownika:
+    input(id="username" type="text" name="username")
+    label(for="password") Hasło:
+    input(id="password" type="password" name="password")
+    input(type="submit" value="Zaloguj")

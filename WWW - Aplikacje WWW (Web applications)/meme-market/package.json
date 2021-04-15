@@ -1,0 +1,38 @@
+{
+  "name": "zadanie",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "init": "node ./bin/init-db",
+    "build": "tsc",
+    "watch": "npm-watch"
+  },
+  "dependencies": {
+    "connect-sqlite3": "^0.9.11",
+    "cookie-parser": "~1.4.4",
+    "csurf": "^1.11.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4",
+    "sqlite3": "^4.2.0",
+    "typescript": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/sqlite3": "^3.1.6",
+    "npm-watch": "^0.6.0"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "."
+      ],
+      "extensions": "ts"
+    }
+  }
+}

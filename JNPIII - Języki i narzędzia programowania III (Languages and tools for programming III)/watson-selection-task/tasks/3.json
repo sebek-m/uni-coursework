@@ -1,0 +1,12 @@
+{
+  "task_number": 3,
+  "task_name": "reguła pragmatyczna",
+  "intro_story": "Wyobraź sobie, że jesteś urzędnikiem imigracyjnym na Międzynarodowym Porcie Lotniczym w Manili, stolicy Filipin. Między dokumentami, które musisz sprawdzić jest kartka nazywana formularzem Z. Jedna strona tego formularza zawiera informację czy osoba przyleciała na Filipiny - \"WJAZD\", czy też tylko podróżuje przez Filipiny tranzytem - \"TRANZYT\", podczas gdy druga strona zawiera listę nazw tropikalnych chorób przeciw którym pasażer był szczepiony wciągu ostatnich 6 miesięcy. Musisz przekonać się, że:",
+  "rule": "jeśli formularz z jednej informuje \"WJAZD\", to na drugiej stronie na liście chorób występuje malaria",
+  "p": "WJAZD",
+  "non_p": "TRANZYT",
+  "q": "malaria, cholera, tyfus",
+  "non_q": "cholera, tyfus",
+  "extra_description": "Jest   to   regulacja   zdrowotna,   której   celem   tego   jest   upewnienie   się,   że   pasażerowie przylatujący   na   Filipiny   są   chronieni   przed   tą   chorobą.   Karty,   które   zobaczysz   poniżej przedstawiają cztery formularze typu Z. Wskaż, który z tych formularzy byś odwrócił(-a), aby sprawdzić powyższą regulację zdrowotną.",
+  "card_selection_task": "Zaznacz tylko te karty, które potrzebujesz sprawdzić, czy którakolwiek osoba złamała regulację zdrowotną."
+}

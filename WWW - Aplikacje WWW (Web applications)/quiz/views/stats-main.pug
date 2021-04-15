@@ -1,0 +1,11 @@
+extends bases/split-mid-base
+
+block main-section
+  div(class="quiz-stats-main")
+    h2 STATYSTYKI
+    each quiz in solved_quizzes
+      a(href="/stats/" + quiz.id class="quiz-stats-option") #{quiz.title}
+    a(class="back-button" href="/") Powrót do strony głównej
+
+block unveiler
+  link(rel='stylesheet', href='/stylesheets/unveiler.css')

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} - Panel eksperymentatora{% endblock %}
+{% block content %}
+  <input type="hidden" id="stage-num" value="{{ stage_num }}">
+  <div id='settings-view'>
+    <h2 id='settings-header'>{{ stage_name }}</h2>
+    <form id='setting-inputs' onsubmit='return acceptSettings(event)'>
+      <div class='input-label'>Instrukcja:</div>
+      <textarea id='stage-instructions'>{{ stage.instructions }}</textarea>
+      <div class='input-label'>Czas trwania:</div>
+      <input type='number' id='stage-duration' value="{{ stage.duration }}" required>
+      <input type='submit' id='accept-settings' value='Zatwierdź'>
+    </form>
+  </div>
+  <script>
+    async function acceptSettings(e) {
+      e.preventDefault();
+
+      if (document.getElementById('stage-duration').value == "" ||
+          isNaN(document.getElementById('stage-duration').value)) {
+        return;
+      }
+
+      await fetch(`/submit-stage-settings/${document.getElementById('stage-num').value}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          instructions: document.getElementById('stage-instructions').value,
+          duration: parseInt(document.getElementById('stage-duration').value)
+        })
+      })
+
+      window.location.href = '/settings';
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>1023 alternatywy</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href="/static/main.css">
+  <link rel="icon" type="image/ico" href="/static/favicon.ico" />
+</head>
+<body>
+  <div id="researcher-interface" class="modal">
+    <div id="interface-content" class="modal-window">
+
+      <div class="modal-window-header">
+        <b>Interfejs eksperymentatora</b>
+        <div id="interface-close" class="close">&times;</div>
+      </div>
+    
+      <form id="settings-form">
+        <p><b>Tryb:</b></p>
+        <input type="radio" id="feedback-mode" name="mode">
+        <label for="feedback-mode">Ze sprzężeniem zwrotnym</label>
+        <br>
+        <input type="radio" id="no-feedback-mode" name="mode">
+        <label for="no-feedback-mode">Bez sprzężenia zwrotnego</label>
+    
+        <p><b>Wersja:</b></p>
+        <input type="radio" id="overall-time-version" name="version">
+        <label for="overall-time-version">Z prezentacją trwającą przez czas t</label>
+        <br>
+        <input type="radio" id="final-time-version" name="version">
+        <label for="final-time-version">Z prezentacją trwającą przez czas t od momentu zgaszenia wszystkich lampek</label>
+    
+        <br>
+    
+        <p><b>Czas t:</b></p>
+        <input type="number" id="time-t-input" name="time_t">
+    
+        <br>
+    
+        <p><b>Liczba konfiguracji pokazywanych we właściwej sesji:</b></p>
+        <input type="number" id="conf-num-input" name="conf_num">
+    
+        <br><br>
+    
+        <button id="save-for-participant-button">Zapisz dla obecnie badanego</button>
+        <button id="save-as-default-button">Zapisz jako domyślne</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="pause-menu" class="modal">
+    <div id="pause-content" class="modal-window">
+      <div class="modal-window-header">
+        <b>Pauza</b>
+      </div>
+
+      <p><b>Wznów sesję lub zakończ</b></p>
+
+      <button id="resume-session-button">Wznów</button>
+      <button id="end-session-button">Zakończ</button>
+    </div>
+  </div>
+
+  <div id="container">
+    <div id="main-column" class="container-view">
+      <div id="nickname-input-view">
+        <form id="nickname-form">
+          <div class="input-label">
+            Podaj pseudonim:
+          </div>
+          <input id="nickname-input" type="text" required>
+
+          <button id="accept-nickname">Dalej</button>
+        </form>
+      </div>
+      
+      <div id="age-sex-input-view">
+        <form id="age-sex-form">
+          <div class="input-label">
+            Wiek:
+          </div>
+          <input id="age-input" type="number" required>
+
+          <div class="input-label">
+            Płeć:
+          </div>
+          <select id="sex-select" required>
+            <option value="female">Kobieta</option>
+            <option value="male">Mężczyzna</option>
+          </select>
+
+          <button id="accept-age-sex">Dalej</button>
+        </form>
+      </div>
+
+      <div id="pre-session-view">
+        <h2 id="welcome-text">
+
+        </h2>
+        <div id="known-user-welcome">
+          <div id="all-patterns-info">
+            Wszystkie konfiguracje zostały już zaprezentowane.
+          </div>
+
+          <button id="start-session-button">Rozpocznij kolejną sesję</button>
+        </div>
+
+        <div id="new-user-welcome">
+          <div>
+            <p>Połóż:</p>
+            <ul>
+              <li>palce wskazujące lewej dłoni na klawiszach QWER</li>
+              <li>palce wskazujące prawej dłoni na klawiszach UIOP</li>
+              <li>lewy kciuk na klawiszu V</li>
+              <li>prawy kciuk na klawiszu N</li>
+            </ul>
+          </div>
+          <p>
+            Naciśnięcie jednego z wyżej wymienionych klawiszy powoduje zgaszenie odpowiadającej mu lampki.
+          </p>
+          <p>
+            Za chwilę rozpoczniesz sesję treningową, w której zapoznasz się z zadaniem na podstawie 5 konfiguracji.
+          </p>
+          <p>
+            Następnie rozpocznie się właściwa sesja eksperymentalna.
+          </p>
+          <p>
+            By zapauzować sesję, naciśnij klawisze Z + X + N.
+          </p>
+
+          <button id="start-training-button">Rozpocznij sesję treningową</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="in-between-view" class="container-view">
+      <p>
+        Koniec sesji treningowej. Sesja eksperymentalna za chwilę się rozpocznie.
+      </p>
+    </div>
+
+    <div id="in-progress-view" class="container-view">
+      <div id="lights-row">
+        {% for lamp in ['Q', 'W', 'E', 'R', 'V', 'N', 'U', 'I', 'O', 'P'] %}
+          <div class="light">
+            <img src="/static/bulb_off.png" class="bulb bulb-off">
+            <img src="/static/bulb_on.png" class="bulb bulb-on">
+            <div class="letter">
+              {{ lamp }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="end-screen-view" class="container-view">
+      <p id="end-message">
+        Koniec sesji eksperymentalnej
+      </p>
+      <button id="back-to-start">Powrót do początku</button>
+    </div>
+  </div>
+  <script src="/static/main.js"></script>
+</body>
+</html>

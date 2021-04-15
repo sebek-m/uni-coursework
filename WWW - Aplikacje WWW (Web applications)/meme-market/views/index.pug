@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel="icon" href="/favicon.ico")
+  style
+    include /stylesheets/style.css
+  body
+    header
+      div(class="header-main-section")
+        h1= message
+        div(class="counter")
+          | During this session you have viewed
+          | #[span #{view_count}]
+          | #{page_s}!
+        img(id="header-img" src="/local_memes/header.jpg")
+      div(class="header-login-section")
+        if !username
+          form(method="post" action="/login" class="login-form")
+            if login_failed
+              div(class="login-failed-msg") Incorrect password!
+            
+            label(for="username") Username:
+            input(name="username" type="text" required="required")
+            label(for="password") Password:
+            input(name="password" type="password" required="required")
+            input(type="submit" value="Log in")
+        else
+          div Logged in as:
+          div(class="username")= username
+          form(action="/logout")
+            input(type="submit" value="Log out")
+    h1(id="meme-list-label")="Meme list"
+    ul(class="meme-list")
+      each meme in memes
+        li
+          a(href="meme/" + meme.id) #{meme.name}
+          div(class="price") Price: #{meme.price}
+          img(class="meme-img" src=meme.url)

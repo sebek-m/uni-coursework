@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %} - Panel eksperymentatora{% endblock %}
+{% block content %}
+  <div id='settings-view'>
+    <h2 id='settings-header'>Zadanie <input type='number' id='task-number' value="{{ task.task_number }}"">, <input type='text' id='task-name' value="{{ task.task_name }}""></h2>
+    <form id='setting-inputs' onsubmit='return acceptSettings(event)'>
+      <div class='input-label'>Historyjka wprowadzająca:</div>
+      <textarea id='task-story' required>{{ task.intro_story }}</textarea>
+      <div class='input-label'>Reguła:</div>
+      <textarea id='rule' required>{{ task.rule }}</textarea>
+
+      <fieldset>
+        <legend>Karty:</legend>
+
+        <div class='input-label'>P (poprzednik):</div>
+        <textarea id='p' required>{{ task.p }}</textarea>
+        <div class='input-label'>non-P (zaprzeczenie poprzednika):</div>
+        <textarea id='non-p' required>{{ task.non_p }}</textarea>
+        <div class='input-label'>Q (następnik):</div>
+        <textarea id='q' required>{{ task.q }}</textarea>
+        <div class='input-label'>non-Q (zaprzeczenie następnika):</div>
+        <textarea id='non-q' required>{{ task.non_q }}</textarea>
+      </fieldset>
+
+      <div class='input-label'>Dodatkowa treść:</div>
+      <textarea id='task-extra-description'>{{ task.extra_description }}</textarea>
+
+      <div class='input-label'>Polecenie wyboru kart:</div>
+      <textarea id='card-selection-task' required>{{ task.card_selection_task }}</textarea>
+
+      <input type='submit' id='accept-settings' value='Zatwierdź'>
+    </form>
+  </div>
+  <script>
+    async function acceptSettings(e) {
+      e.preventDefault();
+
+      if (!document.getElementById('setting-inputs').checkValidity() ||
+          document.getElementById('task-number').value == "" || isNaN(document.getElementById('task-number').value == "") ||
+          document.getElementById('task-name').value == "") {
+        return;
+      }
+
+      await fetch(`/update-task/${document.getElementById('task-number').value}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          task_number: parseInt(document.getElementById('task-number').value),
+          task_name: document.getElementById('task-name').value,
+          intro_story: document.getElementById('task-story').value,
+          rule: document.getElementById('rule').value,
+          p: document.getElementById('p').value,
+          non_p: document.getElementById('non-p').value,
+          q: document.getElementById('q').value,
+          non_q: document.getElementById('non-q').value,
+          extra_description: document.getElementById('task-extra-description').value,
+          card_selection_task: document.getElementById('card-selection-task').value
+        })
+      })
+
+      window.location.href = '/settings';
+    }
+  </script>
+{% endblock %}

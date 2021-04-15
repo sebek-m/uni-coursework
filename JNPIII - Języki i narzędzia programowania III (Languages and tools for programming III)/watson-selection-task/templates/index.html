@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id='text-view'>
+      <div id='big-text' class='text-box'></div>
+      <div id='small-text' class='text-box'>{{ welcome_text }}</div>
+    </div>
+    <div id='info-input-view'>
+      <h2>Wprowadź dane:</h2>
+      <form id='info-form'>
+        <div>
+          <div class='input-object'>
+            <div class='input-label'>Psuedonim:</div>
+            <input type='text' id='nickname-input' name='nickname-input' required>
+          </div>
+          
+          <div class='input-object'>
+            <div class='input-label'>Płeć:</div>
+            <div>
+              <input type='radio' id='female' name='gender' value='f' required>
+              <label for='female'>Kobieta</label>
+            </div>
+            <div>
+              <input type='radio' id='male' name='gender' value='m' required>
+              <label for='male'>Mężczyzna</label>
+            </div>
+          </div>
+
+          <div class='input-object'>
+            <div class='input-label'>Wiek:</div>
+            <input type='number' id='age-input' name='age-input' required>
+          </div>
+        </div>
+        
+        <input type='submit' id='accept-info' value='Dalej'>
+      </form>
+    </div>
+    <div id='lined-window-view'>
+      <div id='top'>
+        <div id='intro-story' class='text-box'></div>
+        <div id='top-experimental'>
+          <div class='rule'></div>
+          <div class='extra-description text-box'></div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div id='bottom'>
+        <div class='rule' id='rule2' style='font-weight: bold;'></div>
+        <div id='bottom-control'>
+          <div class='extra-description text-box'></div>
+        </div>
+        <div id='cards-section'>
+          <div class='card' data-selected='false'></div>
+          <div class='card' data-selected='false'></div>
+          <div class='card' data-selected='false'></div>
+          <div class='card' data-selected='false'></div>
+        </div>
+        <div id='card-task' class='text-box'></div>
+        <div id='bottom-text'>Naciśnij odpowiednie przyciski reprezentujące karty. Klikając przycisk powtórnie możesz cofnąć wybór.</div>
+      </div>
+    </div>
+
+    <button id="next-button">Dalej</button>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="../static/fetches.js"></script>
+<script type="module" src="../static/utils.js"></script>
+<script type="module" src="{{ main_script }}"></script>
+{% endblock %}
