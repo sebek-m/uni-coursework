@@ -1,0 +1,1 @@
+***The err.h and err.c files, found in a few projects in this repository, have not been written by me - they were provided as a part of miscellaneous class scenarios at the MIMUW Moodle platform: (https://moodle.mimuw.edu.pl)***
